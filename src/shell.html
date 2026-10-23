@@ -1047,6 +1047,14 @@ function obligationsHTML(mode){
     if (tb) blocks.push(tb);
     if (rightsRole) blocks.push(RIGHTS(false));
   }
+  // Υποχρέωση καταχώρισης στο Μητρώο για φορείς του Δημοσίου
+  if (gr() === "public") {
+    blocks.push({
+      role: "Καταχώριση συστήματος ΤΝ στο Μητρώο του δημόσιου τομέα",
+      ref: "Άρθρο 21 ν. 5321/2026",
+      html: GR_REGISTRY
+    });
+  }
   const more = moreSection([greeceBlock(mode==="hr"?"hr":"nothr"), PENALTIES]);
   const head = `<h2>Οι υποχρεώσεις σας</h2>`;
   if (!blocks.length) return head+`<p>Ο Κανονισμός ΤΝ δεν επιβάλλει υποχρεώσεις για τον ρόλο που επιλέξατε σε αυτό το αποτέλεσμα.</p>`+more;
