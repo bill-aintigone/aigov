@@ -1,0 +1,1187 @@
+<title>Έλεγχος Κανονισμού ΤΝ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+<style>
+/* Layout: Greek public-service pattern — blue header bar, one question per page, two-thirds column with a side list of sections, grey footer. Single light theme by design. */
+:root{
+  color-scheme:light;
+  --blue:#003476; --blue-dark:#00244f; --link:#1a5ea8; --link-hover:#003476;
+  --text:#0b0c0c; --secondary:#4f5a61; --border:#b1b4b6; --border-light:#d8dde0;
+  --bg:#ffffff; --bg-grey:#f3f4f5; --focus:#ffdd00;
+  --red:#c4291c; --green:#00703c; --amber:#a14a00;
+  --font:"Roboto",Arial,"Helvetica Neue",Helvetica,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-underline-offset:.15em}
+a:hover{color:var(--link-hover);text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid transparent;background:var(--focus);box-shadow:0 -2px var(--focus),0 4px var(--text);color:var(--text)}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.container{max-width:1000px;margin:0 auto}
+
+/* header */
+.govhead{background:var(--blue);color:#fff;padding-block:14px}
+.govhead .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 24px}
+.service{color:#fff;text-decoration:none;font-weight:700;font-size:20px;line-height:1.3}
+.service:hover{color:#fff;text-decoration:underline}
+.govhead small{font-size:14px;color:#dbe4f0}
+.subbar{border-bottom:1px solid var(--border-light);padding-block:10px;font-size:15px;color:var(--secondary)}
+.subbar .container{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:space-between}
+.tag-beta{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:13px;padding:2px 8px;margin-right:8px;letter-spacing:.02em}
+
+main{padding-block:24px 56px}
+.back{display:inline-block;font-size:16px;margin-bottom:22px;background:none;border:0;padding:0 0 0 14px;position:relative;color:var(--text);text-decoration:underline;cursor:pointer;font-family:var(--font)}
+.back::before{content:"";position:absolute;left:2px;top:.5em;width:7px;height:7px;border:solid var(--text);border-width:0 0 2px 2px;transform:rotate(45deg)}
+.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:40px;align-items:start}
+.grid.full{grid-template-columns:minmax(0,1fr)}
+.col{min-width:0}
+
+.caption{display:block;color:var(--secondary);font-size:19px;margin-bottom:6px}
+h1,.h1{font-size:34px;line-height:1.18;font-weight:700;margin:0 0 20px;text-wrap:balance}
+h2{font-size:26px;line-height:1.25;font-weight:700;margin:36px 0 14px}
+h3{font-size:21px;margin:24px 0 10px}
+p{margin:0 0 16px}
+.hint{color:var(--secondary);margin:-8px 0 20px;max-width:40em}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0;max-width:100%}
+
+/* radios and checkboxes */
+.choices{display:flex;flex-direction:column;gap:12px}
+.choice{position:relative;padding-left:52px;min-height:40px}
+.choice input{-webkit-appearance:none;appearance:none;position:absolute;left:0;top:0;width:40px;height:40px;margin:0;border:2px solid var(--text);background:#fff;cursor:pointer}
+.choice input[type=radio]{border-radius:50%}
+.choice input[type=radio]:checked{box-shadow:inset 0 0 0 8px #fff;background:var(--text)}
+.choice input[type=checkbox]:checked{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='%230b0c0c' stroke-width='3.4'/%3E%3C/svg%3E") center/26px no-repeat}
+.choice input:focus-visible{outline:none;box-shadow:0 0 0 4px var(--focus)}
+.choice input[type=radio]:checked:focus-visible{box-shadow:inset 0 0 0 8px #fff,0 0 0 4px var(--focus)}
+.choice label{display:block;padding:7px 0 4px;cursor:pointer;touch-action:manipulation}
+.or{margin:2px 0 2px;color:var(--text)}
+.opt-more{margin:2px 0 0}
+.opt-more summary,.defs summary,details.acc summary{cursor:pointer;color:var(--link);font-size:16px;list-style:none;display:inline-block;position:relative;padding-left:20px;text-decoration:underline;text-underline-offset:.15em}
+.opt-more summary::-webkit-details-marker,.defs summary::-webkit-details-marker,details.acc summary::-webkit-details-marker{display:none}
+.opt-more summary::before,.defs summary::before{content:"";position:absolute;left:2px;top:.42em;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent currentColor}
+.opt-more[open] summary::before,.defs[open] summary::before{border-width:10px 6px 0;border-color:currentColor transparent transparent;top:.5em}
+.opt-more .more,.defs .more{border-left:5px solid var(--border);padding:10px 0 10px 16px;margin-top:8px;font-size:16px}
+.more ul,.more ol{margin:4px 0;padding-left:20px}
+.more p{margin:0 0 8px}
+.defs{margin:-6px 0 22px}
+.defs dl{margin:0} .defs dt{font-weight:700} .defs dd{margin:0 0 10px}
+
+.error .choices{border-left:5px solid var(--red);padding-left:14px}
+.error-msg{color:var(--red);font-weight:700;margin:-6px 0 14px}
+
+.btn{display:inline-block;font:400 19px/1.2 var(--font);padding:10px 18px 9px;border:2px solid transparent;border-radius:0;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 2px 0 var(--blue-dark);margin-top:30px}
+.btn:hover{background:var(--blue-dark)}
+.btn:focus-visible{background:var(--focus);color:var(--text);box-shadow:0 2px 0 var(--text)}
+.btn.secondary{background:var(--bg-grey);color:var(--text);box-shadow:0 2px 0 #858686}
+.btn.secondary:hover{background:#dbdad9}
+.btn-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.btn-row .btn{margin-top:0}
+.status{font-size:16px;color:var(--green)}
+.visually-hidden{position:absolute!important;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip:rect(0 0 0 0);border:0;white-space:nowrap}
+
+/* side list */
+.side{border-top:4px solid var(--blue);padding-top:12px;font-size:16px}
+.side h2{font-size:19px;margin:0 0 10px}
+.side ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.side li{color:var(--secondary);padding-left:14px;border-left:4px solid transparent}
+.side li.current{color:var(--text);font-weight:700;border-left-color:var(--blue)}
+.side li.done{color:var(--text)}
+.side li.done::after{content:" — ολοκληρώθηκε";color:var(--secondary);font-weight:400}
+.side .restart{margin-top:18px;display:inline-block}
+
+/* result */
+.panel{padding:28px 30px;color:#fff;margin-bottom:28px}
+.panel h1{color:#fff;margin:0 0 10px;font-size:32px}
+.panel p{margin:0;font-size:18px;color:#fff}
+.panel--stop{background:var(--red)} .panel--hr{background:var(--amber)} .panel--go{background:var(--green)} .panel--info{background:var(--blue)} .panel--out{background:#505a5f}
+.prose{max-width:42em}
+.prose ol,.prose ul{padding-left:24px;margin:0 0 16px}
+.prose li{margin-bottom:8px}
+ol.alpha{list-style:lower-greek} ol.roman{list-style:lower-roman}
+.prose ol ol,.prose ol ul{margin-top:8px}
+.small{font-size:16px;color:var(--secondary)}
+.inset{border-left:10px solid var(--border);padding:12px 0 12px 16px;margin:20px 0}
+.warning{position:relative;padding:8px 0 8px 52px;margin:16px 0 20px;font-size:19px;min-height:38px}
+.warning-icon{position:absolute;left:0;top:2px;width:36px;height:36px;border-radius:50%;background:var(--text);color:#fff;font-weight:700;font-size:26px;line-height:36px;text-align:center}
+
+details.acc{border-top:1px solid var(--border);padding:14px 0}
+details.acc:last-of-type{border-bottom:1px solid var(--border)}
+details.acc summary{display:flex;justify-content:space-between;align-items:baseline;gap:4px 16px;flex-wrap:wrap;padding:0 0 0 30px;font-size:20px;font-weight:700;text-decoration:none;color:var(--text);width:100%}
+details.acc summary::before{content:"+";position:absolute;left:0;top:-2px;font-size:24px;font-weight:400;color:var(--link);width:22px;text-align:center}
+details.acc[open] summary::before{content:"−"}
+details.acc summary:hover .acc-title{text-decoration:underline}
+details.acc .acc-ref{font-size:15px;font-weight:400;color:var(--secondary)}
+details.acc .acc-body{padding:14px 0 4px 30px;max-width:44em}
+.acc-body h4{font-size:18px;margin:18px 0 8px}
+.acc-body h4:first-child{margin-top:0}
+.acc-body ol,.acc-body ul{padding-left:24px;margin:0 0 14px}
+.acc-body li{margin-bottom:8px}
+.who-list{margin:0 0 12px} .who-list div{margin-bottom:14px} .who-list dt{font-weight:700} .who-list dd{margin:2px 0 0}
+
+.summary-list{margin:0 0 24px;border-top:1px solid var(--border)}
+.summary-list .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) auto;gap:6px 20px;padding:12px 0;border-bottom:1px solid var(--border)}
+.summary-list dt{font-weight:700;margin:0}
+.summary-list dd{margin:0}
+.summary-list .change{background:none;border:0;padding:0;font:inherit;color:var(--link);text-decoration:underline;cursor:pointer;justify-self:end}
+
+/* footer */
+.govfoot{background:var(--bg-grey);border-top:1px solid var(--border);padding-block:28px 34px;font-size:15px;color:var(--secondary)}
+.govfoot p{margin:0 0 8px;max-width:60em}
+.govfoot strong{color:var(--text)}
+
+@media (max-width:760px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  h1,.h1{font-size:28px}
+  .panel{padding:22px 20px} .panel h1{font-size:26px}
+  body{font-size:17px}
+  .summary-list .row{grid-template-columns:minmax(0,1fr)}
+  .summary-list .change{justify-self:start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+
+/* ======================================================
+   AI ACT CHECKER — AI.GOV.GR INSPIRED THEME
+   Visual-only override for existing shell.html/index.html
+   ====================================================== */
+
+:root {
+  color-scheme: light;
+
+  --blue: #123c5d;
+  --blue-dark: #0b263f;
+  --link: #245f89;
+  --link-hover: #123c5d;
+
+  --text: #203549;
+  --secondary: #647789;
+  --border: #c8d5df;
+  --border-light: #e2e9ef;
+
+  --bg: #ffffff;
+  --bg-grey: #f5f8fa;
+  --focus: #ffdd00;
+
+  --red: #ae3838;
+  --green: #247556;
+  --amber: #9d641c;
+
+  --font: "Roboto", Arial, sans-serif;
+
+  --accent: #7bb5d5;
+  --surface-blue: #edf4f8;
+  --shadow-soft: 0 12px 34px rgba(13, 43, 68, .055);
+}
+
+/* Base typography */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-grey);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -.008em;
+}
+
+.container {
+  max-width: 1160px;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Header */
+
+.govhead {
+  background: var(--blue-dark);
+  padding-block: 23px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.govhead .container {
+  gap: 12px 30px;
+}
+
+.service {
+  color: #fff;
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: 500;
+  letter-spacing: -.025em;
+  line-height: 1.35;
+  max-width: 740px;
+}
+
+.govhead small {
+  color: #b8cede;
+  font-size: 12px;
+  letter-spacing: .025em;
+}
+
+.subbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  padding-block: 15px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.tag-beta {
+  background: var(--surface-blue);
+  color: var(--blue);
+  border: 1px solid #d6e5ee;
+  padding: 5px 11px;
+  border-radius: 3px;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+/* Main layout */
+
+main {
+  padding-block: 52px 85px;
+  min-height: 62vh;
+}
+
+.grid {
+  grid-template-columns:
+    minmax(0, 2.05fr)
+    minmax(230px, .9fr);
+  gap: 60px;
+}
+
+.grid.full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.col {
+  min-width: 0;
+}
+
+.back {
+  color: var(--link);
+  font-size: 14px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back::before {
+  border-color: currentColor;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+
+.caption {
+  color: var(--link);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  margin-bottom: 13px;
+}
+
+h1, .h1 {
+  color: var(--blue-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(31px, 3.5vw, 44px);
+  font-weight: 400;
+  letter-spacing: -.032em;
+  line-height: 1.2;
+  margin-bottom: 26px;
+}
+
+h2 {
+  color: var(--blue-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h3 {
+  color: var(--blue);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.hint {
+  color: var(--secondary);
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 27px;
+}
+
+/* Radio and checkbox answers */
+
+.choices {
+  gap: 13px;
+}
+
+.choice {
+  min-height: 62px;
+  padding: 12px 17px 12px 66px;
+  border: 1px solid var(--border-light);
+  background: #fff;
+  border-radius: 5px;
+  transition:
+    border-color .18s ease,
+    background-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.choice:hover {
+  background: #f3f8fb;
+  border-color: #97bacf;
+}
+
+.choice:has(input:checked) {
+  background: var(--surface-blue);
+  border-color: var(--link);
+  box-shadow: inset 3px 0 0 var(--link);
+}
+
+.choice input {
+  top: 50%;
+  left: 17px;
+  transform: translateY(-50%);
+  width: 27px;
+  height: 27px;
+  border: 2px solid var(--blue);
+}
+
+.choice input[type=radio]:checked {
+  background: var(--blue);
+  box-shadow: inset 0 0 0 6px #fff;
+}
+
+.choice input[type=checkbox]:checked {
+  background-color: var(--surface-blue);
+}
+
+.choice label {
+  padding: 1px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.choice:focus-within {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.choice input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.choice input[type=radio]:checked:focus-visible {
+  box-shadow:
+    inset 0 0 0 6px #fff,
+    0 0 0 3px var(--focus);
+}
+
+fieldset {
+  min-width: 0;
+}
+
+.or {
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+/* Expanded guidance */
+
+.opt-more summary,
+.defs summary {
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.opt-more .more,
+.defs .more {
+  background: #f4f8fb;
+  border-left: 3px solid #8ebad4;
+  padding: 16px 20px;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Buttons */
+
+.btn {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 4px;
+  box-shadow: none;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 28px;
+  min-height: 52px;
+  transition:
+    background-color .2s ease,
+    transform .2s ease;
+}
+
+.btn:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--blue);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.btn.secondary:hover {
+  background: var(--surface-blue);
+  border-color: var(--link);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  background: var(--blue);
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-row {
+  gap: 14px;
+}
+
+/* Sidebar */
+
+.side {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-top: 3px solid var(--blue);
+  padding: 25px 24px;
+  border-radius: 3px;
+  box-shadow: var(--shadow-soft);
+  font-size: 15px;
+}
+
+.side h2 {
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.side ol {
+  gap: 9px;
+}
+
+.side li {
+  color: var(--secondary);
+  border-left: 3px solid transparent;
+  padding: 7px 0 7px 13px;
+  line-height: 1.5;
+}
+
+.side li.current {
+  background: var(--surface-blue);
+  border-left-color: var(--link);
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.side li.done {
+  color: #3f6277;
+}
+
+.side li.done::after {
+  color: var(--green);
+  font-size: 12px;
+}
+
+.side .restart {
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+/* Results */
+
+.panel {
+  border-radius: 4px;
+  padding: 30px 35px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-soft);
+  border-left: 5px solid rgba(255,255,255,.24);
+}
+
+.panel h1 {
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 3vw, 36px);
+  font-weight: 400;
+}
+
+.panel p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.panel--stop { background: #963c44; }
+.panel--hr { background: #875a24; }
+.panel--go { background: #276d5c; }
+.panel--info { background: var(--blue); }
+.panel--out { background: #506779; }
+
+/* Obligations and expandable legal content */
+
+.prose {
+  max-width: 47em;
+  line-height: 1.75;
+}
+
+.prose li {
+  margin-bottom: 12px;
+}
+
+.inset {
+  border-left: 4px solid #8cb4cf;
+  background: var(--surface-blue);
+  padding: 18px 22px;
+  border-radius: 0 3px 3px 0;
+}
+
+.warning-icon {
+  background: var(--blue-dark);
+}
+
+details.acc {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-bottom: none;
+  padding: 0;
+}
+
+details.acc:last-of-type {
+  border-bottom: 1px solid var(--border-light);
+}
+
+details.acc summary {
+  padding: 19px 25px 19px 56px;
+  color: var(--blue-dark);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+details.acc summary::before {
+  left: 21px;
+  top: 16px;
+  color: var(--link);
+}
+
+details.acc[open] {
+  background: #fcfdfe;
+}
+
+details.acc[open] summary {
+  border-bottom: 1px solid var(--border-light);
+}
+
+details.acc .acc-body {
+  padding: 22px 26px;
+  max-width: none;
+}
+
+details.acc .acc-ref {
+  font-size: 13px;
+  color: var(--secondary);
+}
+
+/* Error and accessibility states */
+
+.error-msg {
+  color: var(--red);
+}
+
+.error .choices {
+  border-left: 4px solid var(--red);
+  padding-left: 16px;
+}
+
+.status {
+  color: var(--green);
+}
+
+.small {
+  color: var(--secondary);
+}
+
+/* Footer */
+
+.govfoot {
+  background: var(--blue-dark);
+  border-top: 0;
+  padding-block: 42px 48px;
+  color: #c5d5e1;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.govfoot strong {
+  color: #fff;
+}
+
+.govfoot p {
+  max-width: 85em;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .grid {
+    gap: 32px;
+    grid-template-columns:
+      minmax(0, 1.7fr)
+      minmax(210px, 1fr);
+  }
+
+  .side {
+    padding: 20px 18px;
+  }
+}
+
+@media (max-width: 760px) {
+  main {
+    padding-block: 32px 65px;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .govhead {
+    padding-block: 20px;
+  }
+
+  .service {
+    font-size: 19px;
+  }
+
+  h1, .h1 {
+    font-size: 31px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .choice {
+    padding: 13px 12px 13px 54px;
+  }
+
+  .choice input {
+    left: 12px;
+  }
+
+  .side {
+    margin-top: 25px;
+  }
+
+  .panel {
+    padding: 24px 22px;
+  }
+
+  .btn {
+    min-height: 50px;
+  }
+
+  details.acc summary {
+    padding-right: 16px;
+  }
+
+  details.acc .acc-body {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .govhead,
+  .govfoot,
+  .subbar {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .side,
+  .panel {
+    box-shadow: none;
+  }
+}
+
+
+
+
+
+
+/* 2026 fresh visual system — overrides only; questionnaire content and logic untouched */
+:root{--blue:#225fd1;--blue-dark:#091f53;--link:#2159bd;--link-hover:#103e98;--text:#16294b;--secondary:#60718d;--border:#dce5f3;--border-light:#e4ebf6;--bg:#f5f8ff;--bg-grey:#edf3fd;--surface-blue:#e8f1ff;--font:"Roboto",Arial,sans-serif}
+html{background:#f5f8ff}
+body{background:radial-gradient(ellipse at 92% 6%,#dceaff 0,transparent 34%),radial-gradient(ellipse at 3% 40%,#e9f3ff 0,transparent 38%),#f5f8ff;color:var(--text)}
+.container{max-width:1320px;width:100%;margin-inline:auto}
+.govhead.gutter,.subbar.gutter{width:calc(100% - 32px);margin-inline:auto;padding-inline:clamp(22px,4vw,64px);border:1px solid rgba(255,255,255,.23);box-sizing:border-box}
+.govhead{position:relative!important;top:auto!important;left:auto!important;right:auto!important;transform:none!important;margin-top:16px!important;padding-block:32px!important;border-radius:38px!important;background:radial-gradient(circle at 90% 0%,rgba(93,164,255,.6),transparent 38%),linear-gradient(120deg,#081b4b,#164aa5 58%,#347ce4)!important;box-shadow:0 22px 55px rgba(17,54,123,.18)!important}
+.govhead .container{max-width:none;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.govhead .service{font-size:clamp(21px,2.3vw,33px);font-weight:500;max-width:820px;letter-spacing:-.035em;color:white}
+.govhead small{color:#e0edff;font-size:13px;line-height:1.7}
+.subbar{max-width:none!important;margin-top:14px!important;padding-block:20px!important;border-radius:27px!important;background:rgba(255,255,255,.88)!important;box-shadow:0 12px 35px rgba(26,60,117,.08);backdrop-filter:blur(12px);color:#536783}
+.subbar .container{max-width:none;display:flex;align-items:center;gap:14px 28px}
+.tag-beta{display:inline-flex;align-items:center;background:linear-gradient(120deg,#2c64d7,#4c8df3)!important;color:white!important;border:0!important;border-radius:999px!important;padding:7px 14px!important;margin-right:12px;font-weight:700;letter-spacing:.07em}
+main{padding-block:48px 100px}
+main>.container{max-width:1240px}
+.panel,.side,.card,details.acc{border-radius:28px!important;border-color:#dfe8f7!important;box-shadow:0 14px 42px rgba(20,54,113,.065)!important;background:#fff}
+.panel{padding:clamp(22px,3vw,44px)!important}
+.choice{border-radius:20px!important;border:1px solid #dce7f8!important;background:linear-gradient(125deg,#fff,#f8fbff)!important;transition:transform .2s,box-shadow .2s,border-color .2s!important}
+.choice:hover{transform:translateY(-2px);border-color:#8fb7f1!important;box-shadow:0 10px 24px rgba(34,95,209,.1)}
+.choice:has(input:checked){background:#eaf2ff!important;border-color:#3979dc!important}
+.btn,button[type=submit],button[type=button]{border-radius:999px!important}
+.btn{background:linear-gradient(115deg,#194baf,#3984ec)!important;box-shadow:0 10px 22px rgba(33,89,189,.17)!important;padding-inline:26px!important}
+.btn:hover{filter:brightness(1.06)}
+.actions,.nav-actions{margin-top:28px!important}
+input:not([type=radio]):not([type=checkbox]),textarea,select{border-radius:15px}
+.govfoot{background:#eaf1fc!important;border-top:1px solid #dbe6f7!important}
+@media(max-width:760px){.govhead.gutter,.subbar.gutter{width:calc(100% - 20px);padding-inline:20px}.govhead{margin-top:10px!important;padding-block:25px!important;border-radius:26px!important}.govhead .container{flex-direction:column;align-items:flex-start}.subbar{border-radius:20px!important}.subbar .container{align-items:flex-start}.panel{padding:22px!important}main{padding-top:28px}}
+@media(prefers-reduced-motion:reduce){.choice{transition:none!important}.choice:hover{transform:none}}
+
+
+/* Contrast, spacing and edge-to-edge refinements — 2026-10-20 */
+:root{
+ --text:#152b50;--secondary:#526783;--link:#1554b5;--link-hover:#0b357b;
+ --red:#ad2934;--green:#176743;--amber:#8b4b08;
+}
+.govhead.gutter,.subbar.gutter{
+ width:100%!important;max-width:none!important;margin:0!important;
+ border-radius:0!important;box-shadow:none!important;
+ box-sizing:border-box;padding-inline:clamp(20px,5.5vw,96px)!important;
+}
+.govhead{
+ position:relative!important;top:auto!important;left:auto!important;right:auto!important;
+ transform:none!important;
+ padding-block:clamp(26px,3vw,46px)!important;
+ background:linear-gradient(110deg,#081b4b 0%,#194a9d 56%,#3984ed 100%)!important;
+}
+.govhead .container,.subbar .container{max-width:none!important;width:100%!important}
+.govhead .service,.govhead .service:hover{color:#fff!important}
+.govhead small{color:#e7efff!important}
+.subbar{
+ padding-block:17px!important;background:#fff!important;
+ color:#3d5475!important;border:0!important;border-bottom:1px solid #dce6f4!important;
+ backdrop-filter:none!important;
+}
+.subbar .tag-beta{background:#205dc8!important;color:#fff!important}
+.panel{color:#152b50!important}
+.panel h1,.panel p{color:inherit!important}
+.panel--stop{background:#fff0f0!important;border:2px solid #c23c47!important}
+.panel--hr{background:#fff5e5!important;border:2px solid #b57416!important}
+.panel--go{background:#e9f8f0!important;border:2px solid #25845a!important}
+.panel--info{background:#eaf2ff!important;border:2px solid #3679d8!important}
+.panel--out{background:#eef1f6!important;border:2px solid #78889e!important}
+.panel h1{font-weight:700!important}
+.panel--stop h1{color:#8e1e2a!important}
+.panel--hr h1{color:#79400a!important}
+.panel--go h1{color:#145d3b!important}
+.panel--info h1{color:#133d87!important}
+.panel--out h1{color:#2e3e58!important}
+.panel p{color:#1a3153!important}
+details.acc{
+ display:block!important;margin:0 0 16px!important;padding:19px 24px!important;
+ border:1px solid #d8e5f7!important;border-radius:25px!important;
+ background:#fff!important;box-shadow:0 8px 22px rgba(18,59,122,.045)!important;
+}
+details.acc:last-of-type{border-bottom:1px solid #d8e5f7!important}
+details.acc summary{align-items:center!important;min-height:42px!important}
+details.acc summary,.acc-title{color:#102b5a!important}
+details.acc .acc-ref{color:#526783!important}
+details.acc .acc-body{color:#1b3151!important}
+details.acc[open]{border-color:#94b9ed!important;box-shadow:0 12px 32px rgba(26,82,160,.09)!important}
+.btn,.btn:visited{color:#fff!important}
+.btn:disabled,.btn[disabled],button:disabled{
+ background:#dce4ef!important;color:#40536e!important;
+ box-shadow:none!important;opacity:1!important;cursor:not-allowed!important;
+ border:1px solid #b7c5d9!important;
+}
+.btn.secondary{background:#e8eef7!important;color:#183b70!important;box-shadow:none!important}
+.btn.secondary:hover{background:#dbe6f5!important}
+.govfoot{background:#e8f0fb!important;color:#3d5373!important;border-top:1px solid #cddcf1!important}
+.govfoot p,.govfoot strong,.govfoot a{color:#344c6e!important}
+.govfoot strong{color:#142e57!important}
+.summary-list .row{border-bottom-color:#d4e1f1!important}
+.summary-list .change{color:#1554b5!important}
+@media(max-width:760px){
+ .govhead.gutter,.subbar.gutter{padding-inline:20px!important}
+ .govhead{padding-block:26px!important}
+ details.acc{padding:16px!important;margin-bottom:12px!important}
+}
+
+
+/* Result banners: solid fills matching the original visual language */
+.panel.panel--stop{background:#963c44!important;border:0!important;border-left:6px solid #b46a72!important}
+.panel.panel--hr{background:#92640e!important;border:0!important;border-left:6px solid #c59a4b!important}
+.panel.panel--go{background:#276d5c!important;border:0!important;border-left:6px solid #5aa08c!important}
+.panel.panel--info{background:#245a9e!important;border:0!important;border-left:6px solid #6d9dd7!important}
+.panel.panel--out{background:#506779!important;border:0!important;border-left:6px solid #8497a5!important}
+.panel.panel--stop,.panel.panel--hr,.panel.panel--go,.panel.panel--info,.panel.panel--out{
+  color:#fff!important;border-radius:4px!important;box-shadow:none!important;
+  padding:clamp(24px,3vw,44px)!important;
+}
+.panel.panel--stop h1,.panel.panel--hr h1,.panel.panel--go h1,.panel.panel--info h1,.panel.panel--out h1,
+.panel.panel--stop p,.panel.panel--hr p,.panel.panel--go p,.panel.panel--info p,.panel.panel--out p{
+  color:#fff!important;
+}
+
+
+/* Final result palette: red, green, grey, blue only. */
+.panel.panel--stop {background:#963c44!important;border:0!important;border-left:6px solid #b46a72!important}
+.panel.panel--go {background:#276d5c!important;border:0!important;border-left:6px solid #5aa08c!important}
+.panel.panel--hr,.panel.panel--out {background:#506779!important;border:0!important;border-left:6px solid #8497a5!important}
+.panel.panel--info {background:#245a9e!important;border:0!important;border-left:6px solid #6d9dd7!important}
+.panel:is(.panel--stop,.panel--go,.panel--hr,.panel--out,.panel--info),
+.panel:is(.panel--stop,.panel--go,.panel--hr,.panel--out,.panel--info) :is(h1,h2,h3,p,small,strong,span){color:#fff!important}
+
+
+/* Final semantic palette: stop=red, hr=blue, go=green, out=gray, info=blue */
+.panel.panel--stop {background:#963c44!important;border-left:6px solid #b46a72!important}
+.panel.panel--hr {background:#245a9e!important;border-left:6px solid #6d9dd7!important}
+.panel.panel--go {background:#276d5c!important;border-left:6px solid #5aa08c!important}
+.panel.panel--out {background:#506779!important;border-left:6px solid #8497a5!important}
+.panel.panel--info {background:#245a9e!important;border-left:6px solid #6d9dd7!important}
+
+/* Semantic result colors: high-risk and prohibited RED; not high-risk GREEN */
+.panel.panel--stop,
+.panel.panel--hr {
+  background:#963c44!important;
+  border-left:6px solid #b46a72!important;
+}
+.panel.panel--go {
+  background:#276d5c!important;
+  border-left:6px solid #5aa08c!important;
+}
+.panel.panel--out {
+  background:#506779!important;
+  border-left:6px solid #8497a5!important;
+}
+.panel.panel--info {
+  background:#245a9e!important;
+  border-left:6px solid #6d9dd7!important;
+}
+
+/* Mixed gov-inspired blue gradient: header, GUIDE badge and primary buttons only */
+:root{--gov-mix-gradient:linear-gradient(145deg,#101174 0%,#08158f 34%,#00129a 58%,#0054d4 100%);}
+.govhead,.govhead.gutter{background:var(--gov-mix-gradient)!important;background-image:var(--gov-mix-gradient)!important;}
+.subbar,.subbar.gutter{background:#fff!important;background-image:none!important;color:#3d5475!important;}
+.subbar .tag-beta{background:var(--gov-mix-gradient)!important;background-image:var(--gov-mix-gradient)!important;color:#fff!important;}
+.btn:not(.secondary),button[type="submit"]:not(.secondary){background:var(--gov-mix-gradient)!important;background-image:var(--gov-mix-gradient)!important;color:#fff!important;box-shadow:0 9px 22px rgba(0,18,154,.19)!important;}
+
+
+/* Coordinated gradients for footer, semantic results, navigation and choices */
+.govfoot,.govfoot.gutter {
+ background:var(--gov-mix-gradient)!important;
+ background-image:var(--gov-mix-gradient)!important;
+ border-top:0!important;color:#fff!important;
+}
+.govfoot :is(p,strong,a,small,span){color:#fff!important;}
+.govfoot a{text-decoration-color:rgba(255,255,255,.75)!important;}
+.panel.panel--stop,.panel.panel--hr{
+ background:linear-gradient(145deg,#751f37 0%,#a12f49 55%,#d45868 100%)!important;
+ border-left:6px solid #ed9ba4!important;
+}
+.panel.panel--go{
+ background:linear-gradient(145deg,#125743 0%,#198263 55%,#35ad82 100%)!important;
+ border-left:6px solid #8ce0b8!important;
+}
+.panel.panel--out{
+ background:linear-gradient(145deg,#37485a 0%,#607185 55%,#8798a9 100%)!important;
+ border-left:6px solid #c0cbd6!important;
+}
+.panel.panel--info{
+ background:var(--gov-mix-gradient)!important;
+ border-left:6px solid #77aaff!important;
+}
+.panel:is(.panel--stop,.panel--hr,.panel--go,.panel--out,.panel--info) :is(h1,h2,h3,p,small,strong,span){color:#fff!important;}
+.side li{border-radius:12px!important;transition:background .2s,color .2s!important;}
+.side li.current{
+ background:var(--gov-mix-gradient)!important;
+ color:#fff!important;border-left-color:#78adff!important;
+ padding-block:9px!important;padding-right:10px!important;
+}
+.side li.done{background:linear-gradient(115deg,#edf3ff,#dce9ff)!important;}
+.choice:has(input:checked){
+ background:linear-gradient(125deg,#e6edff 0%,#bfd8ff 100%)!important;
+ border-color:#1748bc!important;
+}
+.choice input:checked{accent-color:#00129a!important;}
+.btn.secondary,button.secondary{
+ background:linear-gradient(125deg,#eef3ff,#d9e7ff)!important;
+ color:#102a70!important;border:1px solid #b3c9f4!important;
+}
+.btn.secondary:hover,button.secondary:hover{filter:brightness(.97)!important;}
+
+
+/* Only two requested adjustments; all other styles remain unchanged. */
+.side li.current {
+  background:linear-gradient(145deg,
+    rgba(16,17,116,.12) 0%,
+    rgba(8,21,143,.11) 34%,
+    rgba(0,18,154,.10) 58%,
+    rgba(0,84,212,.15) 100%) !important;
+  color:#172d78 !important;
+  border-left-color:#5379d0 !important;
+}
+#copy.btn.secondary {
+  background:var(--gov-mix-gradient) !important;
+  background-image:var(--gov-mix-gradient) !important;
+  color:#fff !important;
+  border-color:transparent !important;
+}
+</style>
+
+<header class="govhead gutter"><div class="container">
+  <a class="service" href="#" id="home">Έλεγχος εφαρμογής του Κανονισμού για την Τεχνητή Νοημοσύνη</a>
+  <small>Κανονισμός (ΕΕ) 2024/1689 · ν. 5321/2026</small>
+</div></header>
+<div class="subbar gutter"><div class="container">
+  <span><span class="tag-beta">ΟΔΗΓΟΣ</span>Ενημερωτικό εργαλείο. Δεν αποτελεί νομική συμβουλή.</span>
+  <span>Ενημέρωση: Οκτώβριος 2026</span>
+</div></div>
+<main class="gutter"><div class="container" id="app" aria-live="polite"></div></main>
+<footer class="govfoot gutter"><div class="container">
+  <p><strong>Σχετικά με το εργαλείο.</strong> Ανεξάρτητο ενημερωτικό εργαλείο, όχι επίσημη υπηρεσία του Ελληνικού Δημοσίου. Βασίζεται στον Κανονισμό (ΕΕ) 2024/1689, όπως τροποποιήθηκε με τον Κανονισμό (ΕΕ) 2026/1744 (Ψηφιακό Omnibus για την ΤΝ), και στον ν. 5321/2026 (ΦΕΚ Α΄ 114/20.07.2026).</p>
+  <p>Τα αποτελέσματα είναι ενδεικτικά. Για αποφάσεις συμμόρφωσης συμβουλευτείτε τα επίσημα κείμενα και νομικό σύμβουλο.</p>
+</div></footer>
+
+<script>
+(function(){
+/*DATA*/
+
+function roleList(){
+  const a = state.answers.Q2||[];
+  return a.map(id=>Q.Q2.opts.find(o=>o.id===id).t).join(", ");
+}
+function inPath(q){ return state.history.some(h=>h.q===q) || state.cur.q===q; }
+function isOSS(){ return (state.answers.Q4||[]).includes("A6"); }
+function sectionB(){ return inPath("Q7") && !(state.answers.Q7||[]).includes("A9"); }
+function gr(){ if(!inPath("Q3a")) return null; const a=state.answers.Q3a||[]; return a.includes("A1")?"public":a.includes("A2")?"private":null; }
+
+function acc(blocks, openFirst){
+  return blocks.map((b,i)=>`<details class="acc"${openFirst&&i===0?" open":""}><summary><span class="acc-title">${b.role}</span><span class="acc-ref">${b.ref}</span></summary><div class="acc-body">${b.html}</div></details>`).join("");
+}
+function moreSection(blocks){
+  blocks = blocks.filter(Boolean);
+  return blocks.length ? `<h2>Περισσότερες πληροφορίες</h2>${acc(blocks,false)}` : "";
+}
+function obligationsHTML(mode){
+  const roles = state.answers.Q2||[];
+  const has = r => roles.includes(r);
+  const rightsRole = has("A7")||has("A8");
+  let blocks = [], note = "";
+  const tb = transparencyBlock();
+  if (mode==="hr"){
+    if (has("A1")||has("A5")) blocks.push(OBL_HR.A1);
+    const sectionA = !inPath("Q10") && !sectionB();
+    ["A5","A6","A3","A4","A2"].filter(has).forEach(r=>blocks.push(r==="A5" && !sectionA ? PM_OTHER : OBL_HR[r]));
+    if (tb) blocks.push(tb);
+    if (rightsRole) blocks.push(RIGHTS(true));
+  } else if (isOSS()){
+    if (tb) blocks.push(tb);
+    if (rightsRole) blocks.push(RIGHTS(false));
+    note = `<p class="small">Επειδή ισχύει η εξαίρεση ανοικτού κώδικα, εμφανίζονται μόνο οι υποχρεώσεις διαφάνειας του άρθρου 50.</p>`;
+  } else {
+    if (has("A1")||has("A5")) blocks.push(OBL_NOTHR.prov(mode));
+    if (mode==="nothr63" && has("A6")) blocks.push(OBL_NOTHR.rep);
+    if (has("A2")) blocks.push(OBL_NOTHR.dep);
+    if (has("A3")||has("A4")) blocks.push(OBL_NOTHR.trade);
+    if (tb) blocks.push(tb);
+    if (rightsRole) blocks.push(RIGHTS(false));
+  }
+  const more = moreSection([greeceBlock(mode==="hr"?"hr":"nothr"), PENALTIES]);
+  const head = `<h2>Οι υποχρεώσεις σας</h2>`;
+  if (!blocks.length) return head+`<p>Ο Κανονισμός ΤΝ δεν επιβάλλει υποχρεώσεις για τον ρόλο που επιλέξατε σε αυτό το αποτέλεσμα.</p>`+more;
+  return head+acc(blocks,true)+note+more;
+}
+END.prohibited.extra = ()=>moreSection([greeceBlock("prohib"), PENALTIES]);
+END.gpai.extra = ()=>moreSection([greeceBlock("gpai"), PENALTIES_GPAI]);
+END.gpai_sr.extra = END.gpai.extra;
+END.q4_a5.extra = ()=> gr() ? GR_TESTING : "";
+
+function route(q, sel){
+  const has = id => sel.includes(id);
+  switch(q){
+   case "Q1": return has("A3") ? {end:"q1_none"} : {q:"Q2"};
+   case "Q2": return has("A9") ? {end:"q2_none"} : {q:"Q3"};
+   case "Q3": return has("A4") ? {end:"q3_out"} : has("A1") ? {q:"Q3a"} : {q:"Q4"};
+   case "Q3a": return {q:"Q4"};
+   case "Q4":
+     for (const a of ["A1","A2","A3","A4","A5"]) if (has(a)) return {end:"q4_"+a.toLowerCase()};
+     if (has("A6")) return {note:"oss"};
+     return afterQ4();
+   case "Q5": return has("A11") ? {q:"Q6"} : {end:"prohibited"};
+   case "Q6": return has("A12") ? {q:"Q7"} : {q:"Q8"};
+   case "Q7": return has("A9") ? {q:"Q9"} : {q:"Q8"};
+   case "Q8": return has("A1") ? {q:"Q12",cls:"hr_annex1"} : {q:"Q9"};
+   case "Q9": return has("A9") ? {q:"Q12",cls:"not_hr_q9"} : {q:"Q10"};
+   case "Q10": return (has("A5")||has("A6")) ? {q:"Q12",cls:"hr_annex3"} : {q:"Q12",cls:"not_hr_63"};
+   case "Q12": return {end: state.cur.cls};
+   case "Q11": return has("A3") ? {end:"gpai"} : {end:"gpai_sr"};
+  }
+}
+function afterQ4(){ return (state.answers.Q1||[]).includes("A1") ? {q:"Q5"} : {q:"Q11"}; }
+
+const KEY = "aiact-el-v1";
+let state = {cur:{q:"Q1"}, answers:{}, history:[]};
+try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if (s && s.cur) state = s; }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+let showError = false;
+
+const app = document.getElementById("app");
+const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pathQs = () => state.history.map(h=>h.q).filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).filter(q=>state.answers[q]&&state.answers[q].length);
+const answerText = q => (state.answers[q]||[]).map(id=>Q[q].opts.find(o=>o.id===id).t).join("; ");
+
+function backLink(){ return state.history.length ? `<button class="back" id="back" type="button">Πίσω</button>` : ""; }
+
+function sideHTML(){
+  const order = ["demo","prohib","hr","transp","gpai"];
+  const visited = new Set(pathQs().map(q=>Q[q].sec));
+  const curSec = state.cur.q ? Q[state.cur.q].sec : null;
+  const gpai = (state.answers.Q1||[]).includes("A2") && inPath("Q2");
+  const shown = order.filter(s => gpai ? ["demo","gpai"].includes(s) : s!=="gpai");
+  return `<aside class="side"><h2>Ενότητες</h2><ol>${shown.map(s=>`<li class="${s===curSec?"current":visited.has(s)?"done":""}">${SECTIONS[s]}</li>`).join("")}</ol>
+  <a href="#" class="restart" id="restart">Ξεκινήστε από την αρχή</a></aside>`;
+}
+
+function renderQuestion(k){
+  const q = Q[k]; const sel = state.answers[k]||[]; const multi = q.type==="multi";
+  const items = q.opts.map(o=>{
+    const id = k+o.id, on = sel.includes(o.id);
+    const more = o.tip ? `<details class="opt-more"><summary>Περισσότερες πληροφορίες</summary><div class="more">${o.tip}</div></details>` : "";
+    return `${multi&&o.none?`<div class="or">ή</div>`:""}<div class="choice"><input type="${multi?"checkbox":"radio"}" name="${k}" id="${id}" value="${o.id}"${on?" checked":""}${o.tip?` aria-describedby="${id}-m"`:""}><label for="${id}">${esc(o.t)}</label>${o.tip?`<div id="${id}-m">${more}</div>`:""}</div>`;
+  }).join("");
+  const hint = q.note ? q.note : multi ? "Επιλέξτε όσα ισχύουν." : "";
+  const defs = q.defs ? `<details class="defs"><summary>Ορισμοί που χρειάζεστε</summary><div class="more"><dl>${q.defs.map(([t,d])=>`<dt>${t}</dt><dd>${esc(d)}</dd>`).join("")}</dl></div></details>` : "";
+  app.innerHTML = `${backLink()}<div class="grid"><div class="col">
+    <form id="qform" novalidate class="${showError?"error":""}">
+      <fieldset aria-describedby="${k}-hint">
+        <legend><span class="caption">${SECTIONS[q.sec]}</span><h1>${esc(q.text)}</h1></legend>
+        ${hint?`<p class="hint" id="${k}-hint">${esc(hint)}</p>`:""}${defs}
+        ${showError?`<p class="error-msg" role="alert" tabindex="-1">${multi?"Επιλέξτε τουλάχιστον μία απάντηση":"Επιλέξτε μία απάντηση"}</p>`:""}
+        <div class="choices">${items}</div>
+      </fieldset>
+      <button class="btn" type="submit" id="next">Συνέχεια</button>
+    </form>
+  </div>${sideHTML()}</div>`;
+  app.querySelectorAll("input").forEach(inp=>inp.addEventListener("change",()=>{
+    const o = q.opts.find(x=>x.id===inp.value);
+    let cur = state.answers[k]||[];
+    if (!multi) cur=[inp.value];
+    else if (inp.checked){ cur = o.none ? [inp.value] : cur.filter(id=>!q.opts.find(x=>x.id===id).none).concat(inp.value); }
+    else cur = cur.filter(id=>id!==inp.value);
+    cur.sort((x,y)=>parseInt(x.slice(1))-parseInt(y.slice(1))); state.answers[k]=cur; save();
+    if (multi) app.querySelectorAll(`input[name="${k}"]`).forEach(x=>{ x.checked = cur.includes(x.value); });
+    if (showError){ showError=false; app.querySelector("form").classList.remove("error"); const m=app.querySelector(".error-msg"); if(m) m.remove(); }
+  }));
+  document.getElementById("qform").addEventListener("submit",e=>{
+    e.preventDefault();
+    const a = state.answers[k]||[];
+    if (!a.length){ showError=true; render(); const m=app.querySelector(".error-msg"); if(m) m.focus(); return; }
+    go(route(k,a));
+  });
+  bindCommon();
+}
+
+function summaryList(){
+  const qs = pathQs(); if (!qs.length) return "";
+  return `<h2>Οι απαντήσεις σας</h2><dl class="summary-list">${qs.map(q=>`<div class="row"><dt>${Q[q].short}</dt><dd>${esc(answerText(q))}</dd><button type="button" class="change" data-q="${q}">Αλλαγή<span class="visually-hidden"> – ${Q[q].short}</span></button></div>`).join("")}</dl>`;
+}
+
+function renderOutcome(o, isNote){
+  app.innerHTML = `${backLink()}<div class="grid full"><div class="col">
+    <div class="panel panel--${o.kind}"><h1>${esc(o.title)}</h1><p>${o.ref}</p></div>
+    <div class="prose">${o.body()}</div>
+    ${o.oblig?obligationsHTML(o.oblig):""}${o.extra?o.extra():""}
+    ${isNote?`<button class="btn" type="button" id="cont">Συνέχεια</button>`:`${summaryList()}
+    <div class="btn-row"><button class="btn secondary" type="button" id="copy">Αντιγραφή απαντήσεων</button><a href="#" id="again">Νέος έλεγχος</a><span class="status" id="status" role="status"></span></div>`}
+  </div></div>`;
+  const c=document.getElementById("cont"); if(c) c.addEventListener("click",()=>go(afterQ4()));
+  const a=document.getElementById("again"); if(a) a.addEventListener("click",e=>{e.preventDefault();reset();});
+  app.querySelectorAll(".change").forEach(b=>b.addEventListener("click",()=>changeTo(b.dataset.q)));
+  const cp=document.getElementById("copy"); if(cp) cp.addEventListener("click",()=>{
+    const txt = "Έλεγχος εφαρμογής του Κανονισμού ΤΝ\n" + pathQs().map(q=>Q[q].short+": "+answerText(q)).join("\n") + "\nΑποτέλεσμα: "+o.title+" ("+o.ref+")";
+    const st=document.getElementById("status");
+    const fallback=()=>{ const ta=document.createElement("textarea"); ta.value=txt; ta.style.cssText="width:100%;min-height:140px;margin-top:14px;font:15px var(--font)"; cp.parentElement.after(ta); ta.select(); st.textContent="Επιλέξτε και αντιγράψτε το κείμενο"; };
+    try{ navigator.clipboard.writeText(txt).then(()=>{st.textContent="Οι απαντήσεις αντιγράφηκαν";},fallback); }catch(e){ fallback(); }
+  });
+  bindCommon();
+}
+
+function bindCommon(){
+  const b=document.getElementById("back"); if(b) b.addEventListener("click",()=>{ showError=false; state.cur = state.history.pop(); save(); render(); window.scrollTo({top:0}); });
+  const r=document.getElementById("restart"); if(r) r.addEventListener("click",e=>{e.preventDefault();reset();});
+}
+function go(next){ showError=false; state.history.push(state.cur); state.cur = next; save(); render(); window.scrollTo({top:0}); }
+function changeTo(q){ while(state.history.length && state.cur.q!==q){ state.cur = state.history.pop(); } save(); render(); window.scrollTo({top:0}); }
+function reset(){ showError=false; state = {cur:{q:"Q1"},answers:{},history:[]}; save(); render(); window.scrollTo({top:0}); }
+document.getElementById("home").addEventListener("click",e=>{e.preventDefault();reset();});
+
+function render(){
+  const c = state.cur;
+  if (c.q) renderQuestion(c.q);
+  else if (c.note) renderOutcome(OSS_NOTE, true);
+  else renderOutcome(END[c.end], false);
+}
+render();
+})();
+</script>
