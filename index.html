@@ -1061,6 +1061,36 @@ const Q = {
    {id:"A9",t:"Παράγει ή αλλοιώνει ρεαλιστικές εικόνες ή βίντεο που απεικονίζουν τα απόκρυφα μέρη ή σεξουαλικές πράξεις αναγνωρίσιμου φυσικού προσώπου χωρίς τη ρητή συναίνεσή του.",tip:"Προστέθηκε στο άρθρο 5 παρ. 1 (στοιχ. βα΄) με τον Κανονισμό (ΕΕ) 2026/1744 (Ψηφιακό Omnibus για την ΤΝ). <b>Εφαρμόζεται από 2 Δεκεμβρίου 2026.</b> Η διάθεση στην αγορά απαγορεύεται όταν η παραγωγή τέτοιου περιεχομένου είναι ο επιδιωκόμενος σκοπός ή ευλόγως προβλέψιμο αποτέλεσμα, χωρίς ο πάροχος να έχει λάβει εύλογα μέτρα προστασίας (π.χ. εκπαίδευση άρνησης, έλεγχοι εξόδου, φιλτράρισμα περιεχομένου)."},
    {id:"A10",t:"Παράγει ή αλλοιώνει υλικό σεξουαλικής κακοποίησης παιδιών.",tip:"Προστέθηκε στο άρθρο 5 παρ. 1 (στοιχ. ββ΄) με τον Κανονισμό (ΕΕ) 2026/1744. <b>Εφαρμόζεται από 2 Δεκεμβρίου 2026.</b>"},
    {id:"A11",t:"Κανένα από τα παραπάνω",none:true}]},
+    Q5a: {
+      sec: "prohib",
+      short: "Διευκρινίσεις για τις πρακτικές βα΄ και ββ΄",
+      type: "multi",
+      text: "Ισχύει κάποια από τις ακόλουθες προϋποθέσεις για το σύστημα ΤΝ;",
+      note: "Επιλέξτε όσες προϋποθέσεις ισχύουν.",
+      opts: [
+        {
+          id: "A1",
+          t: "Η παραγωγή ή ο χειρισμός του εν λόγω υλικού είναι ο επιδιωκόμενος σκοπός του συστήματος ΤΝ."
+        },
+        {
+          id: "A2",
+          t: "Ο σχεδιασμός, η εκπαίδευση, η αρχιτεκτονική, οι ικανότητες ή οι λειτουργίες του συστήματος που απευθύνονται στον χρήστη καθιστούν την παραγωγή ή τον χειρισμό του εν λόγω υλικού ευλόγως προβλέψιμο και αναπαραγώγιμο αποτέλεσμα, χωρίς σημαντική τεχνική τροποποίηση, και το σύστημα δεν διαθέτει εύλογα και επαρκή τεχνικά μέτρα ασφάλειας και άλλες διασφαλίσεις για την πρόληψη και αντιμετώπιση της κακής χρήσης."
+        },
+        {
+          id: "A3",
+          t: "Ο χειρισμός του υλικού από το σύστημα ΤΝ δεν αυξάνει την έκθεση τυχόν απεικονιζόμενων απόκρυφων μερών ούτε μεταβάλλει τη φύση τυχόν απεικονιζόμενων δραστηριοτήτων σαφούς σεξουαλικού χαρακτήρα."
+        },
+        {
+          id: "A4",
+          t: "Ο φορέας εφαρμογής πρόκειται να χρησιμοποιήσει το σύστημα με σκοπό την παραγωγή ή τον χειρισμό του εν λόγω υλικού ή των εν λόγω παραστάσεων."
+        },
+        {
+          id: "A5",
+          t: "Κανένα από τα παραπάνω",
+          none: true
+        }
+      ]
+    },
  Q6:{sec:"hr",short:"Προϊόντα Παραρτήματος I (Τμήμα Α)",type:"single",text:"Είναι το σύστημα ΤΝ προϊόν που εμπίπτει σε έναν από τους παρακάτω τομείς;",
   note:"Επιλέγοντας τομέα δηλώνετε ότι το σύστημα ΤΝ είναι προϊόν που καλύπτεται από την ενωσιακή νομοθεσία εναρμόνισης του τομέα, ανεξάρτητα από το αν διατίθεται ή τίθεται σε λειτουργία χωριστά από τα προϊόντα αυτά. Τα μηχανήματα εξετάζονται πλέον στην επόμενη ερώτηση, επειδή ο Κανονισμός (ΕΕ) 2026/1744 τα μετέφερε στο Τμήμα Β του Παραρτήματος I.",
   opts:[
@@ -1502,7 +1532,23 @@ function route(q, sel){
      for (const a of ["A1","A2","A3","A4","A5"]) if (has(a)) return {end:"q4_"+a.toLowerCase()};
      if (has("A6")) return {note:"oss"};
      return afterQ4();
-   case "Q5": return has("A11") ? {q:"Q6"} : {end:"prohibited"};
+   case "Q5":
+    if (has("A11")) return {q:"Q6"};
+    // Οι υπόλοιπες απαγορευμένες πρακτικές
+    if (sel.some(id =>
+      ["A1","A2","A3","A4","A5","A6","A7","A8"].includes(id)
+    )) {
+      return {end:"prohibited"};
+    }
+    // Περιπτώσεις βα΄ και ββ΄
+    if (has("A9") || has("A10")) {
+      return {q:"Q5a"};
+    }
+    return {q:"Q6"};
+   case "Q5a":
+    return has("A5")
+      ? {q:"Q6"}
+      : {end:"prohibited"};
    case "Q6": return has("A12") ? {q:"Q7"} : {q:"Q8"};
    case "Q7": return has("A9") ? {q:"Q9"} : {q:"Q8"};
    case "Q8": return has("A1") ? {q:"Q12",cls:"hr_annex1"} : {q:"Q9"};
@@ -1537,9 +1583,37 @@ function sideHTML(){
   <a href="#" class="restart" id="restart">Ξεκινήστε από την αρχή</a></aside>`;
 }
 
+function getQuestionOptions(k) {
+  const opts = Q[k].opts;
+
+  if (k !== "Q5a") return opts;
+
+  const selectedPractices = state.answers.Q5 || [];
+  const roles = state.answers.Q2 || [];
+
+  return opts.filter(o => {
+    if (o.id === "A3") {
+      return selectedPractices.includes("A9");
+    }
+
+    if (o.id === "A4") {
+      return roles.includes("A2");
+    }
+
+    return true;
+  });
+}
+
 function renderQuestion(k){
-  const q = Q[k]; const sel = state.answers[k]||[]; const multi = q.type==="multi";
-  const items = q.opts.map(o=>{
+    const q = Q[k];
+    const availableOpts = getQuestionOptions(k);
+    const allowedIds = new Set(availableOpts.map(o => o.id));
+
+    const sel = (state.answers[k] || []).filter(id => allowedIds.has(id));
+    state.answers[k] = sel;
+
+    const multi = q.type === "multi";
+    const items = getQuestionOptions(k).map(o=>{
     const id = k+o.id, on = sel.includes(o.id);
     const more = o.tip ? `<details class="opt-more"><summary>Περισσότερες πληροφορίες</summary><div class="more">${o.tip}</div></details>` : "";
     return `${multi&&o.none?`<div class="or">ή</div>`:""}<div class="choice"><input type="${multi?"checkbox":"radio"}" name="${k}" id="${id}" value="${o.id}"${on?" checked":""}${o.tip?` aria-describedby="${id}-m"`:""}><label for="${id}">${esc(o.t)}</label>${o.tip?`<div id="${id}-m">${more}</div>`:""}</div>`;
@@ -1563,7 +1637,11 @@ function renderQuestion(k){
     if (!multi) cur=[inp.value];
     else if (inp.checked){ cur = o.none ? [inp.value] : cur.filter(id=>!q.opts.find(x=>x.id===id).none).concat(inp.value); }
     else cur = cur.filter(id=>id!==inp.value);
-    cur.sort((x,y)=>parseInt(x.slice(1))-parseInt(y.slice(1))); state.answers[k]=cur; save();
+    cur.sort((x,y)=>parseInt(x.slice(1))-parseInt(y.slice(1)));
+    state.answers[k] = cur;
+    if (k === "Q5" || k === "Q2") {
+      delete state.answers.Q5a;
+    } save();
     if (multi) app.querySelectorAll(`input[name="${k}"]`).forEach(x=>{ x.checked = cur.includes(x.value); });
     if (showError){ showError=false; app.querySelector("form").classList.remove("error"); const m=app.querySelector(".error-msg"); if(m) m.remove(); }
   }));

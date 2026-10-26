@@ -1076,7 +1076,27 @@ function route(q, sel){
      for (const a of ["A1","A2","A3","A4","A5"]) if (has(a)) return {end:"q4_"+a.toLowerCase()};
      if (has("A6")) return {note:"oss"};
      return afterQ4();
-   case "Q5": return has("A11") ? {q:"Q6"} : {end:"prohibited"};
+   case "Q5":
+    if (has("A11")) return {q:"Q6"};
+
+    // Οι υπόλοιπες απαγορευμένες πρακτικές
+    if (sel.some(id =>
+      ["A1","A2","A3","A4","A5","A6","A7","A8"].includes(id)
+    )) {
+      return {end:"prohibited"};
+    }
+
+    // Περιπτώσεις βα΄ και ββ΄
+    if (has("A9") || has("A10")) {
+      return {q:"Q5a"};
+    }
+
+    return {q:"Q6"};
+
+   case "Q5a":
+    return has("A5")
+      ? {q:"Q6"}
+      : {end:"prohibited"};
    case "Q6": return has("A12") ? {q:"Q7"} : {q:"Q8"};
    case "Q7": return has("A9") ? {q:"Q9"} : {q:"Q8"};
    case "Q8": return has("A1") ? {q:"Q12",cls:"hr_annex1"} : {q:"Q9"};
@@ -1111,9 +1131,37 @@ function sideHTML(){
   <a href="#" class="restart" id="restart">Ξεκινήστε από την αρχή</a></aside>`;
 }
 
+function getQuestionOptions(k) {
+  const opts = Q[k].opts;
+
+  if (k !== "Q5a") return opts;
+
+  const selectedPractices = state.answers.Q5 || [];
+  const roles = state.answers.Q2 || [];
+
+  return opts.filter(o => {
+    if (o.id === "A3") {
+      return selectedPractices.includes("A9");
+    }
+
+    if (o.id === "A4") {
+      return roles.includes("A2");
+    }
+
+    return true;
+  });
+}
+
 function renderQuestion(k){
-  const q = Q[k]; const sel = state.answers[k]||[]; const multi = q.type==="multi";
-  const items = q.opts.map(o=>{
+    const q = Q[k];
+    const availableOpts = getQuestionOptions(k);
+    const allowedIds = new Set(availableOpts.map(o => o.id));
+
+    const sel = (state.answers[k] || []).filter(id => allowedIds.has(id));
+    state.answers[k] = sel;
+
+    const multi = q.type === "multi";
+    const items = getQuestionOptions(k).map(o=>{
     const id = k+o.id, on = sel.includes(o.id);
     const more = o.tip ? `<details class="opt-more"><summary>Περισσότερες πληροφορίες</summary><div class="more">${o.tip}</div></details>` : "";
     return `${multi&&o.none?`<div class="or">ή</div>`:""}<div class="choice"><input type="${multi?"checkbox":"radio"}" name="${k}" id="${id}" value="${o.id}"${on?" checked":""}${o.tip?` aria-describedby="${id}-m"`:""}><label for="${id}">${esc(o.t)}</label>${o.tip?`<div id="${id}-m">${more}</div>`:""}</div>`;
@@ -1137,7 +1185,11 @@ function renderQuestion(k){
     if (!multi) cur=[inp.value];
     else if (inp.checked){ cur = o.none ? [inp.value] : cur.filter(id=>!q.opts.find(x=>x.id===id).none).concat(inp.value); }
     else cur = cur.filter(id=>id!==inp.value);
-    cur.sort((x,y)=>parseInt(x.slice(1))-parseInt(y.slice(1))); state.answers[k]=cur; save();
+    cur.sort((x,y)=>parseInt(x.slice(1))-parseInt(y.slice(1))); 
+    state.answers[k] = cur;
+    if (k === "Q5" || k === "Q2") {
+      delete state.answers.Q5a;
+    } save();
     if (multi) app.querySelectorAll(`input[name="${k}"]`).forEach(x=>{ x.checked = cur.includes(x.value); });
     if (showError){ showError=false; app.querySelector("form").classList.remove("error"); const m=app.querySelector(".error-msg"); if(m) m.remove(); }
   }));
