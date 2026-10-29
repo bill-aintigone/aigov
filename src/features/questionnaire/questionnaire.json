@@ -1,0 +1,597 @@
+{
+  "locale": "el",
+  "showQuestionNumbers": "off",
+  "clearInvisibleValues": "onHiddenContainer",
+  "pages": [
+    {
+      "name": "page_Q1",
+      "visibleIf": "true",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q1",
+          "title": "Συμπληρώνετε το ερωτηματολόγιο επειδή θέλετε να εντοπίσετε τις απαιτήσεις που αφορούν:",
+          "description": "",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Σύστημα τεχνητής νοημοσύνης (σύστημα ΤΝ)"
+            },
+            {
+              "value": "A2",
+              "text": "Μοντέλο ΤΝ γενικού σκοπού"
+            },
+            {
+              "value": "A3",
+              "text": "Κανένα από τα παραπάνω"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q2",
+      "visibleIf": "((true) and {Q1} notempty and ({Q1} != 'A3'))",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "Q2",
+          "title": "Ποιο από τα παρακάτω περιγράφει καλύτερα τον ρόλο του φορέα που εκπροσωπείτε;",
+          "description": "Επιλέξτε όσα ισχύουν.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε τουλάχιστον μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Πάροχος"
+            },
+            {
+              "value": "A2",
+              "text": "Φορέας εφαρμογής"
+            },
+            {
+              "value": "A3",
+              "text": "Εισαγωγέας"
+            },
+            {
+              "value": "A4",
+              "text": "Διανομέας"
+            },
+            {
+              "value": "A5",
+              "text": "Κατασκευαστής προϊόντος"
+            },
+            {
+              "value": "A6",
+              "text": "Εξουσιοδοτημένος αντιπρόσωπος"
+            },
+            {
+              "value": "A7",
+              "text": "Θιγόμενο πρόσωπο"
+            },
+            {
+              "value": "A8",
+              "text": "Φυσικό πρόσωπο που χρησιμοποιεί σύστημα ΤΝ αποκλειστικά για προσωπική, μη επαγγελματική δραστηριότητα"
+            },
+            {
+              "value": "A9",
+              "text": "Κανένα από τα παραπάνω",
+              "isExclusive": true
+            }
+          ],
+          "clearInvisibleValues": true
+        }
+      ]
+    },
+    {
+      "name": "page_Q3",
+      "visibleIf": "((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q3",
+          "title": "Πού είναι εγκατεστημένος ή πού βρίσκεται ο φορέας που εκπροσωπείτε;",
+          "description": "",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Εντός της Ευρωπαϊκής Ένωσης"
+            },
+            {
+              "value": "A2",
+              "text": "Εκτός της Ευρωπαϊκής Ένωσης, αλλά τα στοιχεία εξόδου του συστήματος ΤΝ χρησιμοποιούνται στην Ευρωπαϊκή Ένωση"
+            },
+            {
+              "value": "A3",
+              "text": "Εκτός της Ευρωπαϊκής Ένωσης, αλλά το σύστημα ΤΝ διατίθεται στην αγορά ή τίθεται σε λειτουργία στην Ευρωπαϊκή Ένωση"
+            },
+            {
+              "value": "A4",
+              "text": "Εκτός της Ευρωπαϊκής Ένωσης και τα στοιχεία εξόδου του συστήματος ΤΝ δεν χρησιμοποιούνται στην Ευρωπαϊκή Ένωση"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q3a",
+      "visibleIf": "((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q3a",
+          "title": "Είναι ο φορέας εγκατεστημένος στην Ελλάδα;",
+          "description": "Ο ν. 5321/2026 ορίζει πώς εφαρμόζεται ο Κανονισμός ΤΝ στην Ελλάδα: αρμόδιες αρχές, καταγγελίες, κυρώσεις και μητρώο συστημάτων ΤΝ του δημόσιου τομέα.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Ναι, είναι φορέας του δημόσιου τομέα"
+            },
+            {
+              "value": "A2",
+              "text": "Ναι, είναι ιδιωτική επιχείρηση, οργανισμός ή πρόσωπο εγκατεστημένο στην Ελλάδα"
+            },
+            {
+              "value": "A3",
+              "text": "Όχι, είναι εγκατεστημένος σε άλλο κράτος μέλος της ΕΕ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q4",
+      "visibleIf": "((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q4",
+          "title": "Ισχύει κάποιο από τα παρακάτω για τα συστήματα ή τα μοντέλα ΤΝ που εξετάζετε;",
+          "description": "",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Διατίθενται στην αγορά, τίθενται σε λειτουργία ή χρησιμοποιούνται, με ή χωρίς τροποποιήσεις, αποκλειστικά για στρατιωτικούς σκοπούς, σκοπούς άμυνας ή εθνικής ασφάλειας, ανεξάρτητα από το είδος του φορέα που ασκεί τις δραστηριότητες αυτές."
+            },
+            {
+              "value": "A2",
+              "text": "Δεν διατίθενται στην αγορά ούτε τίθενται σε λειτουργία στην Ένωση, αλλά τα στοιχεία εξόδου τους χρησιμοποιούνται στην Ένωση αποκλειστικά για στρατιωτικούς σκοπούς, σκοπούς άμυνας ή εθνικής ασφάλειας."
+            },
+            {
+              "value": "A3",
+              "text": "Χρησιμοποιούνται από δημόσιες αρχές τρίτης χώρας ή διεθνείς οργανισμούς στο πλαίσιο διεθνούς συνεργασίας ή συμφωνιών για την επιβολή του νόμου και τη δικαστική συνεργασία με την Ένωση ή με κράτη μέλη, εφόσον παρέχονται επαρκείς εγγυήσεις για τα θεμελιώδη δικαιώματα και τις ελευθερίες των ατόμων."
+            },
+            {
+              "value": "A4",
+              "text": "Έχουν αναπτυχθεί και τεθεί σε λειτουργία, μαζί με τα στοιχεία εξόδου τους, ειδικά και αποκλειστικά για σκοπούς επιστημονικής έρευνας και ανάπτυξης."
+            },
+            {
+              "value": "A5",
+              "text": "Βρίσκονται ακόμη σε στάδιο έρευνας, δοκιμών ή ανάπτυξης (δεν περιλαμβάνονται οι δοκιμές υπό πραγματικές συνθήκες)."
+            },
+            {
+              "value": "A6",
+              "text": "Διατίθενται βάσει δωρεάν άδειας ανοικτού κώδικα, εκτός εάν διατίθενται στην αγορά ή τίθενται σε λειτουργία ως συστήματα ΤΝ υψηλού κινδύνου ή εμπίπτουν στο άρθρο 5 ή στο άρθρο 50."
+            },
+            {
+              "value": "A7",
+              "text": "Κανένα από τα παραπάνω"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q5",
+      "visibleIf": "((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "Q5",
+          "title": "Εμπίπτει το σύστημα ΤΝ σε μία ή περισσότερες από τις παρακάτω πρακτικές;",
+          "description": "Επιλέξτε όσα ισχύουν.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε τουλάχιστον μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Χρησιμοποιεί τεχνικές που απευθύνονται στο υποσυνείδητο ή σκόπιμα χειριστικές ή παραπλανητικές τεχνικές, ώστε να στρεβλώνει ουσιωδώς τη συμπεριφορά προσώπου, με πιθανό αποτέλεσμα σημαντική βλάβη."
+            },
+            {
+              "value": "A2",
+              "text": "Εκμεταλλεύεται ευαλωτότητες λόγω ηλικίας, αναπηρίας ή ειδικής κοινωνικής ή οικονομικής κατάστασης, ώστε να στρεβλώνει ουσιωδώς τη συμπεριφορά προσώπου, με πιθανό αποτέλεσμα σημαντική βλάβη."
+            },
+            {
+              "value": "A3",
+              "text": "Κάνει κοινωνική βαθμολόγηση που οδηγεί σε επιζήμια ή δυσμενή μεταχείριση ορισμένων φυσικών προσώπων ή ομάδων."
+            },
+            {
+              "value": "A4",
+              "text": "Εκτιμά ή προβλέπει τον κίνδυνο να διαπράξει φυσικό πρόσωπο αξιόποινη πράξη αποκλειστικά βάσει κατάρτισης προφίλ ή αξιολόγησης χαρακτηριστικών της προσωπικότητάς του."
+            },
+            {
+              "value": "A5",
+              "text": "Δημιουργεί ή επεκτείνει βάσεις δεδομένων αναγνώρισης προσώπου μέσω μη στοχευμένης συλλογής εικόνων προσώπου από το διαδίκτυο ή από βίντεο κλειστού κυκλώματος (CCTV)."
+            },
+            {
+              "value": "A6",
+              "text": "Αναγνωρίζει συναισθήματα στον χώρο εργασίας ή σε εκπαιδευτικά ιδρύματα (εκτός αν χρησιμοποιείται για ιατρικούς λόγους ή λόγους ασφάλειας)."
+            },
+            {
+              "value": "A7",
+              "text": "Χρησιμοποιεί βιομετρική κατηγοριοποίηση για να συναγάγει ευαίσθητα χαρακτηριστικά, όπως πολιτικά φρονήματα, θρησκευτικές πεποιθήσεις ή γενετήσιο προσανατολισμό."
+            },
+            {
+              "value": "A8",
+              "text": "Χρησιμοποιεί εξ αποστάσεως βιομετρική ταυτοποίηση «σε πραγματικό χρόνο» σε δημόσια προσβάσιμους χώρους για την επιβολή του νόμου, χωρίς ρητή εξουσιοδότηση από εθνικό νόμο που εκδίδεται βάσει του Κανονισμού ΤΝ."
+            },
+            {
+              "value": "A9",
+              "text": "Παράγει ή αλλοιώνει ρεαλιστικές εικόνες ή βίντεο που απεικονίζουν τα απόκρυφα μέρη ή σεξουαλικές πράξεις αναγνωρίσιμου φυσικού προσώπου χωρίς τη ρητή συναίνεσή του."
+            },
+            {
+              "value": "A10",
+              "text": "Παράγει ή αλλοιώνει υλικό σεξουαλικής κακοποίησης παιδιών."
+            },
+            {
+              "value": "A11",
+              "text": "Κανένα από τα παραπάνω",
+              "isExclusive": true
+            }
+          ],
+          "clearInvisibleValues": true
+        }
+      ]
+    },
+    {
+      "name": "page_Q5a",
+      "visibleIf": "((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "Q5a",
+          "title": "Ισχύει κάποια από τις ακόλουθες προϋποθέσεις για το σύστημα ΤΝ;",
+          "description": "Επιλέξτε όσες προϋποθέσεις ισχύουν.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε τουλάχιστον μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Η παραγωγή ή ο χειρισμός του εν λόγω υλικού είναι ο επιδιωκόμενος σκοπός του συστήματος ΤΝ."
+            },
+            {
+              "value": "A2",
+              "text": "Ο σχεδιασμός, η εκπαίδευση, η αρχιτεκτονική, οι ικανότητες ή οι λειτουργίες του συστήματος που απευθύνονται στον χρήστη καθιστούν την παραγωγή ή τον χειρισμό του εν λόγω υλικού ευλόγως προβλέψιμο και αναπαραγώγιμο αποτέλεσμα, χωρίς σημαντική τεχνική τροποποίηση, και το σύστημα δεν διαθέτει εύλογα και επαρκή τεχνικά μέτρα ασφάλειας και άλλες διασφαλίσεις για την πρόληψη και αντιμετώπιση της κακής χρήσης."
+            },
+            {
+              "value": "A3",
+              "text": "Ο χειρισμός του υλικού από το σύστημα ΤΝ δεν αυξάνει την έκθεση τυχόν απεικονιζόμενων απόκρυφων μερών ούτε μεταβάλλει τη φύση τυχόν απεικονιζόμενων δραστηριοτήτων σαφούς σεξουαλικού χαρακτήρα.",
+              "visibleIf": "{Q5} contains 'A9'"
+            },
+            {
+              "value": "A4",
+              "text": "Ο φορέας εφαρμογής πρόκειται να χρησιμοποιήσει το σύστημα με σκοπό την παραγωγή ή τον χειρισμό του εν λόγω υλικού ή των εν λόγω παραστάσεων.",
+              "visibleIf": "{Q2} contains 'A2'"
+            },
+            {
+              "value": "A5",
+              "text": "Κανένα από τα παραπάνω",
+              "isExclusive": true
+            }
+          ],
+          "clearInvisibleValues": true
+        }
+      ]
+    },
+    {
+      "name": "page_Q6",
+      "visibleIf": "((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q6",
+          "title": "Είναι το σύστημα ΤΝ προϊόν που εμπίπτει σε έναν από τους παρακάτω τομείς;",
+          "description": "Επιλέγοντας τομέα δηλώνετε ότι το σύστημα ΤΝ είναι προϊόν που καλύπτεται από την ενωσιακή νομοθεσία εναρμόνισης του τομέα, ανεξάρτητα από το αν διατίθεται ή τίθεται σε λειτουργία χωριστά από τα προϊόντα αυτά. Τα μηχανήματα εξετάζονται πλέον στην επόμενη ερώτηση, επειδή ο Κανονισμός (ΕΕ) 2026/1744 τα μετέφερε στο Τμήμα Β του Παραρτήματος I.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Παιχνίδια"
+            },
+            {
+              "value": "A2",
+              "text": "Σκάφη αναψυχής και προσωπικά σκάφη"
+            },
+            {
+              "value": "A3",
+              "text": "Ανελκυστήρες και κατασκευαστικά στοιχεία ασφαλείας ανελκυστήρων"
+            },
+            {
+              "value": "A4",
+              "text": "Εξοπλισμός και συστήματα προστασίας σε δυνητικά εκρηκτικές ατμόσφαιρες"
+            },
+            {
+              "value": "A5",
+              "text": "Ραδιοεξοπλισμός"
+            },
+            {
+              "value": "A6",
+              "text": "Εξοπλισμός υπό πίεση"
+            },
+            {
+              "value": "A7",
+              "text": "Εγκαταστάσεις μεταφοράς με συρματόσχοινα"
+            },
+            {
+              "value": "A8",
+              "text": "Μέσα ατομικής προστασίας"
+            },
+            {
+              "value": "A9",
+              "text": "Συσκευές αερίων καυσίμων"
+            },
+            {
+              "value": "A10",
+              "text": "Ιατροτεχνολογικά προϊόντα"
+            },
+            {
+              "value": "A11",
+              "text": "In vitro διαγνωστικά ιατροτεχνολογικά προϊόντα"
+            },
+            {
+              "value": "A12",
+              "text": "Κανένα από τα παραπάνω"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q7",
+      "visibleIf": "((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q7",
+          "title": "Προορίζεται το σύστημα ΤΝ να χρησιμοποιηθεί ως κατασκευαστικό στοιχείο ασφαλείας προϊόντος που εμπίπτει σε έναν από τους παρακάτω τομείς;",
+          "description": "Επιλέγοντας τομέα δηλώνετε ότι το σύστημα ΤΝ προορίζεται για κατασκευαστικό στοιχείο ασφαλείας προϊόντος που καλύπτεται από την ενωσιακή νομοθεσία εναρμόνισης του τομέα, ανεξάρτητα από το αν διατίθεται ή τίθεται σε λειτουργία χωριστά από το προϊόν.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Ασφάλεια της πολιτικής αεροπορίας"
+            },
+            {
+              "value": "A2",
+              "text": "Δίτροχα ή τρίτροχα οχήματα και τετράκυκλα"
+            },
+            {
+              "value": "A3",
+              "text": "Γεωργικά και δασικά οχήματα"
+            },
+            {
+              "value": "A4",
+              "text": "Εξοπλισμός πλοίων"
+            },
+            {
+              "value": "A5",
+              "text": "Διαλειτουργικότητα του σιδηροδρομικού συστήματος"
+            },
+            {
+              "value": "A6",
+              "text": "Μηχανοκίνητα οχήματα και ρυμουλκούμενά τους"
+            },
+            {
+              "value": "A7",
+              "text": "Πολιτική αεροπορία"
+            },
+            {
+              "value": "A8",
+              "text": "Μηχανήματα"
+            },
+            {
+              "value": "A9",
+              "text": "Κανένα από τα παραπάνω"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q8",
+      "visibleIf": "((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} notcontains 'A12')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} notcontains 'A9'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q8",
+          "title": "Πρέπει το προϊόν, ή το προϊόν στο οποίο το σύστημα ΤΝ θα χρησιμοποιηθεί ως κατασκευαστικό στοιχείο ασφαλείας, να υποβληθεί σε αξιολόγηση της συμμόρφωσης από τρίτο μέρος βάσει της τομεακής νομοθεσίας;",
+          "description": "Περιλαμβάνονται και τα προϊόντα για τα οποία μπορείτε να αποφύγετε την αξιολόγηση από τρίτο μέρος εφαρμόζοντας πλήρως εναρμονισμένα πρότυπα. Απαντήστε «Όχι» αν η αξιολόγηση από τρίτο μέρος αφορά μόνο κινδύνους άσχετους με την ασφάλεια, όπως τη χρήση του ραδιοφάσματος (άρθρο 6 παρ. 1γ, Κανονισμός (ΕΕ) 2026/1744).",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Ναι"
+            },
+            {
+              "value": "A2",
+              "text": "Όχι"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q9",
+      "visibleIf": "((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} contains 'A9')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} notcontains 'A12')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} notcontains 'A9'))) and {Q8} notempty and ({Q8} != 'A1'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q9",
+          "title": "Εμπίπτει το σύστημα ΤΝ σε κάποιον από τους παρακάτω τομείς;",
+          "description": "",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Βιομετρία"
+            },
+            {
+              "value": "A2",
+              "text": "Υποδομές ζωτικής σημασίας"
+            },
+            {
+              "value": "A3",
+              "text": "Εκπαίδευση και επαγγελματική κατάρτιση"
+            },
+            {
+              "value": "A4",
+              "text": "Απασχόληση, διαχείριση εργαζομένων και πρόσβαση στην αυτοαπασχόληση"
+            },
+            {
+              "value": "A5",
+              "text": "Πρόσβαση σε βασικές ιδιωτικές υπηρεσίες και βασικές δημόσιες υπηρεσίες και παροχές"
+            },
+            {
+              "value": "A6",
+              "text": "Επιβολή του νόμου, εφόσον η χρήση επιτρέπεται από το ενωσιακό ή το εθνικό δίκαιο"
+            },
+            {
+              "value": "A7",
+              "text": "Μετανάστευση, άσυλο και διαχείριση των συνοριακών ελέγχων, εφόσον η χρήση επιτρέπεται από το ενωσιακό ή το εθνικό δίκαιο"
+            },
+            {
+              "value": "A8",
+              "text": "Απονομή δικαιοσύνης και δημοκρατικές διαδικασίες"
+            },
+            {
+              "value": "A9",
+              "text": "Κανένα από τα παραπάνω"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q10",
+      "visibleIf": "((((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} contains 'A9')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} notcontains 'A12')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} notcontains 'A9'))) and {Q8} notempty and ({Q8} != 'A1'))) and {Q9} notempty and ({Q9} notcontains 'A9'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q10",
+          "title": "Πληροί το σύστημα ΤΝ κάποια από τις παρακάτω προϋποθέσεις;",
+          "description": "Αν το σύστημα ΤΝ κάνει κατάρτιση προφίλ φυσικών προσώπων, επιλέξτε αυτή την απάντηση ακόμη κι αν ισχύει και κάποια άλλη. Σύστημα του Παραρτήματος III που κάνει κατάρτιση προφίλ θεωρείται πάντοτε υψηλού κινδύνου.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Προορίζεται να εκτελεί στενά καθορισμένη διαδικαστική εργασία."
+            },
+            {
+              "value": "A2",
+              "text": "Προορίζεται να βελτιώνει το αποτέλεσμα ανθρώπινης δραστηριότητας που έχει ήδη ολοκληρωθεί."
+            },
+            {
+              "value": "A3",
+              "text": "Προορίζεται να εντοπίζει μοτίβα λήψης αποφάσεων ή αποκλίσεις από προηγούμενα μοτίβα και δεν αντικαθιστά ούτε επηρεάζει την ολοκληρωμένη ανθρώπινη αξιολόγηση χωρίς κατάλληλη ανθρώπινη επανεξέταση."
+            },
+            {
+              "value": "A4",
+              "text": "Προορίζεται να εκτελεί προπαρασκευαστική εργασία για αξιολόγηση που αφορά τις χρήσεις που επιλέξατε στην προηγούμενη ερώτηση."
+            },
+            {
+              "value": "A5",
+              "text": "Κάνει κατάρτιση προφίλ φυσικών προσώπων."
+            },
+            {
+              "value": "A6",
+              "text": "Κανένα από τα παραπάνω"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page_Q12",
+      "visibleIf": "((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} notcontains 'A12')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} notcontains 'A9'))) and {Q8} notempty and ({Q8} = 'A1')) or ((((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} contains 'A9')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} notcontains 'A12')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} notcontains 'A9'))) and {Q8} notempty and ({Q8} != 'A1'))) and {Q9} notempty and ({Q9} contains 'A9')) or ((((((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} contains 'A9')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} notcontains 'A12')) or ((((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and ({Q5} contains 'A11')) or ((((((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A1'))) and {Q5} notempty and (({Q5} contains 'A9' or {Q5} contains 'A10') and {Q5} notcontains 'A1' and {Q5} notcontains 'A2' and {Q5} notcontains 'A3' and {Q5} notcontains 'A4' and {Q5} notcontains 'A5' and {Q5} notcontains 'A6' and {Q5} notcontains 'A7' and {Q5} notcontains 'A8'))) and {Q5a} notempty and ({Q5a} contains 'A5'))) and {Q6} notempty and ({Q6} contains 'A12'))) and {Q7} notempty and ({Q7} notcontains 'A9'))) and {Q8} notempty and ({Q8} != 'A1'))) and {Q9} notempty and ({Q9} notcontains 'A9'))) and {Q10} notempty and (true))",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "Q12",
+          "title": "Κάνει το σύστημα ΤΝ κάποιο από τα παρακάτω;",
+          "description": "Οι υποχρεώσεις διαφάνειας ισχύουν είτε το σύστημα είναι υψηλού κινδύνου είτε όχι. Εφαρμόζονται από 2 Αυγούστου 2026.",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε τουλάχιστον μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Αλληλεπιδρά άμεσα με φυσικά πρόσωπα (π.χ. chatbot ή φωνητικός βοηθός)."
+            },
+            {
+              "value": "A2",
+              "text": "Παράγει συνθετικό περιεχόμενο ήχου, εικόνας, βίντεο ή κειμένου."
+            },
+            {
+              "value": "A3",
+              "text": "Κάνει αναγνώριση συναισθημάτων ή βιομετρική κατηγοριοποίηση."
+            },
+            {
+              "value": "A4",
+              "text": "Παράγει ή αλλοιώνει περιεχόμενο εικόνας, ήχου ή βίντεο που συνιστά προϊόν απομίμησης βαθιάς μάθησης (deepfake)."
+            },
+            {
+              "value": "A5",
+              "text": "Παράγει ή αλλοιώνει κείμενο που δημοσιεύεται για την ενημέρωση του κοινού σε θέματα δημόσιου ενδιαφέροντος."
+            },
+            {
+              "value": "A6",
+              "text": "Κανένα από τα παραπάνω",
+              "isExclusive": true
+            }
+          ],
+          "clearInvisibleValues": true
+        }
+      ]
+    },
+    {
+      "name": "page_Q11",
+      "visibleIf": "((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A2' or {Q3} = 'A3')) or ((((((((true) and {Q1} notempty and ({Q1} != 'A3'))) and {Q2} notempty and ({Q2} notcontains 'A9'))) and {Q3} notempty and ({Q3} = 'A1'))) and {Q3a} notempty and (true))) and {Q4} notempty and (({Q4} = 'A6' or {Q4} = 'A7') and {Q1} = 'A2'))",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q11",
+          "title": "Ποιο από τα παρακάτω ισχύει για το μοντέλο ΤΝ γενικού σκοπού;",
+          "description": "",
+          "isRequired": true,
+          "requiredErrorText": "Επιλέξτε μία απάντηση",
+          "choices": [
+            {
+              "value": "A1",
+              "text": "Έχει ικανότητες υψηλού αντίκτυπου, που αξιολογούνται με κατάλληλα τεχνικά εργαλεία και μεθοδολογίες, μεταξύ άλλων δείκτες και κριτήρια αναφοράς."
+            },
+            {
+              "value": "A2",
+              "text": "Έχει, βάσει απόφασης της Επιτροπής (αυτεπάγγελτα ή κατόπιν ειδοποίησης της επιστημονικής ομάδας), ικανότητες ή αντίκτυπο ισοδύναμα με εκείνα του άρθρου 51 παρ. 1 στοιχ. α΄, με βάση τα κριτήρια του Παραρτήματος XIII."
+            },
+            {
+              "value": "A3",
+              "text": "Οι ικανότητές του δεν φθάνουν ούτε υπερβαίνουν τα παραπάνω όρια."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
