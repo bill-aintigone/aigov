@@ -1,6 +1,6 @@
-# AI Act Assessment Tool
-
 ![AI Act Assessment Tool](docs/images/banner.png)
+
+# AI Act Assessment Tool
 
 An AI Act assessment tool that helps users identify potentially applicable
 requirements and obligations based on their role, location and use of
