@@ -33,14 +33,6 @@ Start the development server:
 npm run dev
 ```
 
-To access the development server from another machine:
-
-```bash
-npm run dev -- --host 0.0.0.0
-```
-
-Use the address and port printed in the terminal.
-
 ## Production build
 
 Generate the production files:
